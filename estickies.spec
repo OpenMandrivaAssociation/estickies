@@ -14,6 +14,7 @@ License: 	BSD
 Group: 		Toys
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
+Source0:	%{name}.desktop
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 Buildrequires:	edje-devel >= 0.5.0.038, edje >= 0.5.0.038
@@ -51,6 +52,12 @@ cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
         xdg="true"
 EOF
 
+desktop-file-install --vendor="" \
+  --remove-category="Application" \
+  --add-category="X-MandrivaLinux-Multimedia-Graphics" \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+
+
 mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
 install -m 644 data/images/%name.png %buildroot%_liconsdir/%name.png
 convert -resize 32x32 data/images/%name.png %buildroot%_iconsdir/%name.png
@@ -79,3 +86,4 @@ rm -rf $RPM_BUILD_ROOT
 %_iconsdir/*.png
 %_miconsdir/*.png
 %_datadir/pixmaps/*.png
+%{_datadir}/applications/*
