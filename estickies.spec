@@ -1,6 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -14,7 +14,7 @@ License: 	BSD
 Group: 		Toys
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
-Source0:	%{name}.desktop
+Source1:	%{name}.desktop
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 Buildrequires:	edje-devel >= 0.5.0.038, edje >= 0.5.0.038
@@ -51,6 +51,9 @@ cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
         startup_notify="true" \
         xdg="true"
 EOF
+
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cp -vf %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/applications/
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
