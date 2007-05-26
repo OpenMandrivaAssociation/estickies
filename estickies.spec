@@ -1,5 +1,5 @@
 %define	name	estickies
-%define	version	0.0.1
+%define	version 0.0.1
 %define release %mkrel 1
 
 %define major 0
@@ -55,7 +55,7 @@ EOF
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Multimedia-Graphics" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/%name.desktop
 
 
 mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
