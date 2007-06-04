@@ -19,6 +19,8 @@ BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 Buildrequires:	edje-devel >= 0.5.0.038, edje >= 0.5.0.038
 Buildrequires:	embryo-devel >= 0.9.1.038, embryo >= 0.9.1.038
+BuildRequires:  ImageMagick
+BuildRequires:  desktop-file-utils
 
 
 %description
