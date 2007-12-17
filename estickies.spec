@@ -15,7 +15,6 @@ Group: 		Toys
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 Buildrequires:	edje-devel >= 0.5.0.038, edje >= 0.5.0.038
 Buildrequires:	embryo-devel >= 0.9.1.038, embryo >= 0.9.1.038
