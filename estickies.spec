@@ -41,19 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
 
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):\
-        needs="X11" \
-        section="Toys" \
-        title="%name" \
-        longtitle="Estickies is a sticky notes application" \
-        command="%{_bindir}/%name" \
-        icon="%name.png" \
-        startup_notify="true" \
-        xdg="true"
-EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 cp -vf %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/applications/
@@ -87,7 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-%{_menudir}/*
 %_liconsdir/*.png
 %_iconsdir/*.png
 %_miconsdir/*.png
