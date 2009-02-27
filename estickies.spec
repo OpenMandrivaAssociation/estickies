@@ -1,6 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -16,9 +16,9 @@ URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	ecore-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
-Buildrequires:	edje-devel >= 0.5.0.038, edje >= 0.5.0.038
-Buildrequires:	embryo-devel >= 0.9.1.038, embryo >= 0.9.1.038
+BuildRequires:	ecore-devel >= 0.9.9.050, etk-devel >= 0.1.0.042
+Buildrequires:	edje-devel >= 0.5.0.050, edje >= 0.5.0.050
+Buildrequires:	embryo-devel >= 0.9.9.050, embryo >= 0.9.9.050
 BuildRequires:  imagemagick
 BuildRequires:  desktop-file-utils
 
