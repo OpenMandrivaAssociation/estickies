@@ -17,7 +17,7 @@ Source: 	%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.050, etk-devel >= 0.1.0.042
-Buildrequires:	edje-devel >= 0.5.0.050, edje >= 0.5.0.050
+Buildrequires:	edje-devel >= 0.9.9.050, edje >= 0.9.9.050
 Buildrequires:	embryo-devel >= 0.9.9.050, embryo >= 0.9.9.050
 BuildRequires:  imagemagick
 BuildRequires:  desktop-file-utils
