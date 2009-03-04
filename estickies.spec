@@ -1,6 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 6
+%define release %mkrel 7
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -35,6 +35,11 @@ rm -rf $RPM_BUILD_ROOT
 %build
 ./autogen.sh
 %configure2_5x
+# fix libtool issue on release < 2009.1
+%if %mdkversion < 200910
+perl -pi -e "s/^ECHO.*/ECHO='echo'\necho='echo'\n/" libtool
+%endif
+
 %make
 
 %install
