@@ -1,6 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 7
+%define release %mkrel 8
 
 %define major 0
 %define libname %mklibname %{name} %major
