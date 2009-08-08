@@ -1,10 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 8
-
-%define major 0
-%define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define release %mkrel 9
 
 Summary: 	E17 Sticky notes application
 Name: 		%{name}
@@ -14,7 +10,6 @@ License: 	BSD
 Group: 		Toys
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
-Source1:	%{name}.desktop
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ecore-devel >= 0.9.9.050, etk-devel >= 0.1.0.042
 Buildrequires:	edje-devel >= 0.9.9.050, edje >= 0.9.9.050
@@ -29,11 +24,10 @@ uses Etk's runtime theming support to change the look
 and feel of the windows and buttons.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q
 
 %build
-./autogen.sh
+NOCONFIGURE=yes ./autogen.sh
 %configure2_5x
 # fix libtool issue on release < 2009.1
 %if %mdkversion < 200910
@@ -44,26 +38,7 @@ perl -pi -e "s/^ECHO.*/ECHO='echo'\necho='echo'\n/" libtool
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
-
-
-
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
-cp -vf %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/applications/
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Multimedia-Graphics" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/%name.desktop
-
-
-mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
-install -m 644 data/images/%name.png %buildroot%_liconsdir/%name.png
-convert -resize 32x32 data/images/%name.png %buildroot%_iconsdir/%name.png
-convert -resize 16x16 data/images/%name.png %buildroot%_miconsdir/%name.png
-
-mkdir -p %buildroot%{_datadir}/pixmaps
-cp data/images/%name.png %buildroot%{_datadir}/pixmaps/%name.png
+%makeinstall_std
 
 %if %mdkversion < 200900
 %post 
@@ -75,7 +50,6 @@ cp data/images/%name.png %buildroot%{_datadir}/pixmaps/%name.png
 %{clean_menus} 
 %endif
 
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -84,8 +58,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-%_liconsdir/*.png
-%_iconsdir/*.png
-%_miconsdir/*.png
-%_datadir/pixmaps/*.png
+%{_datadir}/pixmaps/*
 %{_datadir}/applications/*
