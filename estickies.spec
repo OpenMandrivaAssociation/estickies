@@ -1,6 +1,6 @@
 %define	name	estickies
 %define	version 0.0.1
-%define release %mkrel 9
+%define release %mkrel 10
 
 Summary: 	E17 Sticky notes application
 Name: 		%{name}
